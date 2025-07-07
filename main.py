@@ -4,10 +4,10 @@ from player import Player
 
 def main():
     pygame.init()
-    game_clock = pygame.time.Clock()
-    dt = 0
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    game_clock = pygame.time.Clock()
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    dt = 0
 
     while True:
         for event in pygame.event.get():
@@ -15,8 +15,11 @@ def main():
                 return
             
         screen.fill("black")
+        player.update(dt)
         player.draw(screen)
         pygame.display.flip()
+
+        # limit to 60 FPS
         dt = game_clock.tick(60) / 1000
 
 
