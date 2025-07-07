@@ -7,6 +7,9 @@ class Player(CircleShape):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
 
+    def shoot(self):
+        pass
+
     def draw(self, screen):
         pygame.draw.polygon(screen, "white", self.triangle(), 2)
 
