@@ -1,5 +1,5 @@
 import pygame
-from circleshape import CircleShape
+from objects.circleshape import CircleShape
 
 class Particle(CircleShape):
     def __init__(self, x, y):
@@ -10,3 +10,5 @@ class Particle(CircleShape):
 
     def update(self, dt):
         self.position += self.velocity * dt
+        if self.is_off_screen():
+            self.kill()

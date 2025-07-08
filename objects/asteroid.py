@@ -1,7 +1,7 @@
 import pygame
 import random
-from circleshape import CircleShape
-from particle import Particle
+from objects.circleshape import CircleShape
+from objects.particle import Particle
 from constants import *
 
 class Asteroid(CircleShape):
@@ -33,3 +33,5 @@ class Asteroid(CircleShape):
 
     def update(self, dt):
         self.position += self.velocity * dt
+        if self.is_off_screen():
+            self.kill()

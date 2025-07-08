@@ -1,10 +1,11 @@
 import pygame
 from constants import *
-from player import Player
-from asteroid import Asteroid
-from asteroidfield import AsteroidField
-from shot import Shot
-from particle import Particle
+from objects.circleshape import CircleShape
+from objects.player import Player
+from objects.asteroid import Asteroid
+from objects.asteroidfield import AsteroidField
+from objects.shot import Shot
+from objects.particle import Particle
 
 def main():
     pygame.init()
