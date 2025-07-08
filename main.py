@@ -9,6 +9,7 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     game_clock = pygame.time.Clock()
+    font = pygame.font.SysFont(None, 22)
 
     updatables = pygame.sprite.Group()
     drawables = pygame.sprite.Group()
@@ -26,6 +27,9 @@ def main():
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     dt = 0
+
+    prev_fps = None
+    number_surface = None
 
     while True:
         for event in pygame.event.get():
@@ -45,6 +49,14 @@ def main():
 
 
         screen.fill("black")
+
+        #number render
+        fps = round(game_clock.get_fps())
+        if fps != prev_fps:
+            number_surface = font.render(f"{str(fps)} fps", True, "white")
+            prev_fps = fps
+
+        screen.blit(number_surface, (10, 10))
 
         for drawable in drawables:
             drawable.draw(screen)
