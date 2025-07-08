@@ -1,6 +1,7 @@
 import pygame
 import random
 from circleshape import CircleShape
+from particle import Particle
 from constants import *
 
 class Asteroid(CircleShape):
@@ -10,6 +11,12 @@ class Asteroid(CircleShape):
     def split(self):
         self.kill()
         if self.radius <= ASTEROID_MIN_RADIUS:
+            # explode asteroid
+            for i in range(0, PARTICLE_NUMBER):
+                angle = 360 / PARTICLE_NUMBER * i
+                particle_velocity = pygame.Vector2(0, 1).rotate(angle) * PARTICLE_SPEED
+                particle = Particle(self.position.x, self.position.y)
+                particle.velocity = particle_velocity
             return
         new_angle = random.uniform(20, 50)
         vector1 = self.velocity.rotate(new_angle)

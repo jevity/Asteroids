@@ -4,6 +4,7 @@ from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
+from particle import Particle
 
 def main():
     pygame.init()
@@ -15,6 +16,8 @@ def main():
     drawables = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
     shots = pygame.sprite.Group()
+
+    Particle.containers = (updatables, drawables)
    
     # create asteroid field
     Asteroid.containers = (asteroids, updatables, drawables)
@@ -50,7 +53,6 @@ def main():
 
         screen.fill("black")
 
-        #number render
         fps = round(game_clock.get_fps())
         if fps != prev_fps:
             number_surface = font.render(f"{str(fps)} fps", True, "white")
